@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LogtrackAI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0945ecd2a50e97a117f5cfe4ecae3a231db914f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("LogtrackAI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LogtrackAI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
