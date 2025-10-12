@@ -1,10 +1,12 @@
 ﻿namespace LogtrackAI.Domain.Entities
 {
-    public class Motorista
+    public class Motorista      // MEXER !
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Nome { get; set; }
-        public string CNH { get; set; }
-        public ICollection<JornadaTrabalho> Jornadas { get; set; } = new List<JornadaTrabalho>();
+        public string Veiculo { get; set; }
+        public List<Rota> Rotas { get; set; }
+        public bool isactive { get; set; }
+
     }
 }
