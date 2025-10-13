@@ -1,9 +1,11 @@
 ﻿using LogtrackAI.Domain.Entities;
 using LogtrackAI.Domain.Entities.Enums;
-using Microsoft.AspNetCore.Server.HttpSys;
 using LogtrackAI.Domain.Entities.Enums;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Server.HttpSys;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.Json;
+using System.Linq;
 using System.Security.Cryptography.Xml;
 
 
@@ -32,13 +34,45 @@ namespace LogtrackAI.Domain.Entities
 
             EntregasList.Add( new Entrega() {
                     Ordem = ordem,
-                    Endereco = endereco,
-                    Descricao = descricao,
+                    Endereco = endereco, 
+                    Descricao = descricao, 
                     Status = StatusEntrega.EmPreparacao,
-             });
+                    EntregueEm = DateTime.MinValue
+            });
         }
-        
 
+        public void IniciarRota() 
+        {
+            //quando iniciar a rotao status da rota é em andamento...
+            Status = StatutsRota.RotaEmAndamento;
+
+            //atualizar ao mesmo tempo cada entrega :
+            foreach (var entrega in EntregasList.Where(x => x.Status == StatusEntrega.EmPreparacao))
+            {
+                entrega.Status = StatusEntrega.EmTransito  ;
+            }
+            
+        }
+
+        public void FinalizarRota()
+        {
+            var statusFinais = new[]
+            {
+                StatusEntrega.Entregue,
+                StatusEntrega.Ausente1,
+                StatusEntrega.Ausente2,
+                StatusEntrega.Ausente3,
+                StatusEntrega.Devoluacao
+            };
+
+            bool truefinalizados = EntregasList.All( x => statusFinais.Contains(x.Status) ) ;
+
+            if (truefinalizados == true )
+                //quando finalizr a rota status da rota é RotaFinalizada...
+                Status = StatutsRota.RotaFinalizada;
+        }
+
+         
 
 
 
