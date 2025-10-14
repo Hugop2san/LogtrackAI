@@ -35,8 +35,8 @@ namespace LogtrackAI.Domain.Entities
             EntregasList.Add( new Entrega() {
                     Ordem = ordem,
                     Endereco = endereco, 
-                    Descricao = descricao, 
-                    Status = StatusEntrega.EmPreparacao,
+                    Descricao = descricao,
+                StatusEnt = StatusEntrega.EmPreparacao,
                     EntregueEm = DateTime.MinValue
             });
         }
@@ -47,9 +47,9 @@ namespace LogtrackAI.Domain.Entities
             Status = StatutsRota.RotaEmAndamento;
 
             //atualizar ao mesmo tempo cada entrega :
-            foreach (var entrega in EntregasList.Where(x => x.Status == StatusEntrega.EmPreparacao))
+            foreach (var entrega in EntregasList.Where(x => x.StatusEnt == StatusEntrega.EmPreparacao))
             {
-                entrega.Status = StatusEntrega.EmTransito  ;
+                entrega.StatusEnt = StatusEntrega.EmTransito  ;
             }
             
         }
@@ -65,16 +65,12 @@ namespace LogtrackAI.Domain.Entities
                 StatusEntrega.Devoluacao
             };
 
-            bool truefinalizados = EntregasList.All( x => statusFinais.Contains(x.Status) ) ;
+            bool truefinalizados = EntregasList.All( x => statusFinais.Contains(x.StatusEnt) ) ;
 
             if (truefinalizados == true )
                 //quando finalizr a rota status da rota é RotaFinalizada...
                 Status = StatutsRota.RotaFinalizada;
         }
-
-         
-
-
 
 
     }

@@ -6,9 +6,9 @@
         EmTransito = 2,
         Entregue=3,
         Devoluacao=4,
-        Ausente1 = 4,
-        Ausente2 = 4,
-        Ausente3 = 4
+        Ausente1 = 5,
+        Ausente2 = 6,
+        Ausente3 = 7
         
     }
 }
