@@ -29,18 +29,15 @@ namespace LogtrackAI.Domain.Entities
         // METODOS SIMPLES de Add nova entrega na rota
         public void AddEntrega(string endereco, string descricao)
         {
-
             var ordem = EntregasList.Count + 1;
-
             EntregasList.Add( new Entrega() {
                     Ordem = ordem,
                     Endereco = endereco, 
                     Descricao = descricao,
-                StatusEnt = StatusEntrega.EmPreparacao,
+                    StatusEnt = StatusEntrega.EmPreparacao,
                     EntregueEm = DateTime.MinValue
             });
         }
-
         public void IniciarRota() 
         {
             //quando iniciar a rotao status da rota é em andamento...
@@ -51,9 +48,7 @@ namespace LogtrackAI.Domain.Entities
             {
                 entrega.StatusEnt = StatusEntrega.EmTransito  ;
             }
-            
         }
-
         public void FinalizarRota()
         {
             var statusFinais = new[]
