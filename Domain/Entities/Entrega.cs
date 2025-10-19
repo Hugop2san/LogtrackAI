@@ -20,7 +20,7 @@ namespace LogtrackAI.Domain.Entities
         //  Metodos Simples
         public void EntregaEntregue() 
         {
-            if( !(StatusEnt == StatusEntrega.EmPreparacao) )
+            if( StatusEnt == StatusEntrega.EmTransito) 
                 StatusEnt = StatusEntrega.Entregue;
                 EntregueEm = DateTime.MinValue;
 

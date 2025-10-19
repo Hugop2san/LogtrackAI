@@ -1,15 +1,29 @@
 ﻿using LogtrackAI.Domain.Entities;
+using LogtrackAI.Domain.Entities.Enums;
 
 namespace LogtrackAI.Domain.Interfaces
 {
     public interface IEntregaRepository
     {
-        Task<IEnumerable<Entrega>> GetAll();
+
+        // CRUD básico
+        Task<IEnumerable<Entrega>> GetAllAsync();
         Task<Entrega?> GetByIdAsync(Guid id);
         Task<Entrega?> GetByNameAsync(string nome);
         Task AddAsync(Entrega entrega);
         Task UpdateAsync(Entrega entrega);
-        Task Delete(Guid id);
+        Task Delete(Guid id);                  
+
+        // Consultas específicas de negócio
+        Task<IEnumerable<Entrega>> ObterPorRotaAsync(Guid RotaID); //obter a rota que ele
+        Task<IEnumerable<Entrega>> ObterPorStatusAsync(StatusEntrega status);
+            
+        // Ações de negócio
+        //Task MarcarComoEntregueAsync(Guid entregaId);
+        //Task MarcarComoDevolucaoAsync(Guid entregaId);
+        //Task MarcarComoAusenteAsync(Guid entregaId, int tentativa);
+ 
+
 
 
     }

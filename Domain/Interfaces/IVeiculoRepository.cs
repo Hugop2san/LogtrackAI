@@ -6,7 +6,7 @@ namespace LogtrackAI.Domain.Interfaces
     {
         Task<IEnumerable<Veiculo>> GetAll();
         Task<Veiculo?> GetByIdAsync(Guid id);
-        Task<Veiculo?> GetByNameAsync(string marca);
+        Task<Veiculo?> GetByMarcaAsync(string marca);
         Task AddAsync(Veiculo veiculo);
         Task UpdateAsync(Veiculo veiculo);
         Task Delete(Guid id);
