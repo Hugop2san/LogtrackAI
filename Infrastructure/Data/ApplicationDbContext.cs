@@ -1,4 +1,4 @@
-﻿using LibraryFlow.Domain.Entities;
+﻿using LogtrackAI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LogtrackAI.Infrastructure.Data
@@ -11,7 +11,11 @@ namespace LogtrackAI.Infrastructure.Data
         }
 
         //instncias
-        //ex.
-        // public DbSet<Book> Books { get; set; }
+        
+        public DbSet<Entrega> EntregaDB { get; set; }
+        public DbSet<Motorista> MotoristaDB { get; set; }
+        public DbSet<Rota> RotaDB { get; set; }
+        public DbSet<Veiculo> Veiculo { get; set; }
+
     }
 }

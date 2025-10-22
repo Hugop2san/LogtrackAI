@@ -18,19 +18,19 @@ namespace LogtrackAI.Domain.Entities
         public Rota RotaObjeto { get; set; }
 
         //  Metodos Simples
-        public void EntregaEntregue() 
+        public void EntregaEntregue() // tornar como entregue
         {
             if( StatusEnt == StatusEntrega.EmTransito) 
                 StatusEnt = StatusEntrega.Entregue;
                 EntregueEm = DateTime.MinValue;
 
         }
-        public void EntregaDevoluacao()
+        public void EntregaDevoluacao()// tornar devolução
         {
             StatusEnt = StatusEntrega.Devoluacao;
             EntregueEm = DateTime.MinValue;
         }
-        public void EntregaAusente1()
+        public void EntregaAusente1() 
         {
             StatusEnt = StatusEntrega.Ausente1;
             EntregueEm = DateTime.MinValue;
