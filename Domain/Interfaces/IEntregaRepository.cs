@@ -1,5 +1,6 @@
 ﻿using LogtrackAI.Domain.Entities;
 using LogtrackAI.Domain.Entities.Enums;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LogtrackAI.Domain.Interfaces
 {
@@ -9,9 +10,9 @@ namespace LogtrackAI.Domain.Interfaces
         // CRUD básico
         Task<IEnumerable<Entrega>> GetAllAsync();
         Task<Entrega?> GetByIdAsync(Guid id);
-        Task<Entrega?> GetByNameAsync(string nome);
+
         Task AddAsync(Entrega entrega);
-        Task UpdateAsync(Entrega entrega);
+        Task UpdateAsync(object id, [FromBody] Entrega entrega);
         Task Delete(Guid id);                  
 
         // Consultas específicas de negócio

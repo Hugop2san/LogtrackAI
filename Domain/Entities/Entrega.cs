@@ -46,7 +46,23 @@ namespace LogtrackAI.Domain.Entities
             EntregueEm = DateTime.MinValue;
         }
 
+     
+        //COMPARAR O ID DO OBJETO COM O ID DO INPUT :
+        public override bool Equals(object obj)
+        {
+            if (obj is not Entrega)
+            {
+                return false;
+            }
 
+            Entrega other = obj as Entrega;
+
+            return Id.Equals(other.Id);
+        }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
 
 
 
